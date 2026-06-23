@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa do Atleta | Artigos Esportivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Reset e Estilos Globais --- */
+        :root {
+            --primary: #0f172a; /* Azul Escuro Profundo */
+            --secondary: #ff6b00; /* Laranja Esportivo Vibrante */
+            --accent: #2563eb; /* Azul Royal para contraste */
+            --background: #f8fafc; /* Cinza claro suave */
+            --text-dark: #1e293b;
+            --text-light: #fff;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* --- Header / Navegação --- */
+        header {
+            background-color: #fff;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 2.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary), #e05e00);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* --- Seção Hero / Principal --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(37, 99, 235, 0.75)), 
+                        url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10vh;
+            background: linear-gradient(to top, var(--background), transparent);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero .cnpj {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.7;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 50px;
+        }
+
+        /* --- Layout de Grid e Container Global --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- Estilo de Cards Modernos --- */
+        .card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        /* --- Seção de Serviços / Atividades --- */
+        #servicos {
+            grid-column: 1 / -1;
+            margin-top: -50px;
+            margin-bottom: 2rem;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-tag {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 2.3rem;
+            color: var(--accent);
+            background-color: #eff6ff;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* --- Informações de Registro --- */
+        .card h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .info-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .info-key {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .status-badge {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        /* --- Quadro Societário --- */
+        .socios-container {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px dashed #e2e8f0;
+        }
+
+        .socios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .socio-card {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .socio-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .socio-role {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* --- Sidebar com Contatos e Localização --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .sidebar h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-method, .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-icon, .location-icon {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+
+        .contact-method a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .location-box {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* --- Outras Atividades (CNAEs) --- */
+        .cnae-section {
+            grid-column: 1 / -1;
+            background: white;
+        }
+
+        .cnae-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .cnae-item {
+            padding: 10px 15px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #334155;
+            display: flex;
+            gap: 10px;
+        }
+
+        .cnae-code {
+            font-weight: 700;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* --- Animações e Responsividade --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.8rem; }
+            #servicos { margin-top: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            header { flex-direction: column; gap: 10px; padding: 1rem; }
+            nav ul { gap: 1rem; }
+            .info-item { grid-template-columns: 1fr; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span class="material-symbols-outlined logo-icon">sports_score</span>
+            Casa do Atleta
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#servicos">Destaques</a></li>
+                <li><a href="#registro">Corporativo</a></li>
+                <li><a href="#contatos">Contatos</a></li>
+                <li><a href="#cnaes">Atividades</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/5521994807146" target="_blank" class="cta-button">Fale no WhatsApp</a>
+    </header>
+
+    <div class="hero">
+        <span class="section-tag" style="color: rgba(255,255,255,0.8)">Alta Performance & Vestuário</span>
+        <h1>Casa do Atleta</h1>
+        <p>Sua principal referência em comércio varejista de artigos esportivos, vestuário e acessórios na região de Niterói - RJ.</p>
+        <span class="cnpj">CNPJ: 10.760.305/0001-55</span>
+    </div>
+
+    <div class="container">
+
+        <section id="servicos" class="card" style="box-shadow: var(--shadow-md);">
+            <div class="services-header">
+                <span class="section-tag">Foco Principal</span>
+                <h2 class="section-title">Nossas Linhas de Destaque</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="material-symbols-outlined service-icon">sports_tennis</span>
+                    <h3>Artigos Esportivos</h3>
+                </div>
+                <div class="service-card">
+                    <span class="material-symbols-outlined service-icon">apparel</span>
+                    <h3>Vestuário & Acessórios</h3>
+                </div>
+                <div class="service-card">
+                    <span class="material-symbols-outlined service-icon">steps</span>
+                    <h3>Calçados Esportivos</h3>
+                </div>
+                <div class="service-card">
+                    <span class="material-symbols-outlined service-icon">celebration</span>
+                    <h3>Eventos Esportivos</h3>
+                </div>
+            </div>
+        </section>
+
+        <main class="card" id="registro">
+            <h2>
+                <span class="material-symbols-outlined" style="color: var(--accent)">badge</span>
+                Dados de Registro Cadastral
+            </h2>
+            <div class="info-list">
+                <div class="info-item"><span class="info-key">Razão Social</span><span class="info-value">Casa do Atleta Comercio de Artigos Esportivos LTDA</span></div>
+                <div class="info-item"><span class="info-key">Nome Fantasia</span><span class="info-value">Casa do Atleta</span></div>
+                <div class="info-item"><span class="info-key">Inscrição Estadual</span><span class="info-value">78.754.71-0 (RJ)</span></div>
+                <div class="info-item"><span class="info-key">Data de Abertura</span><span class="info-value">27/03/2009 (17 anos, 2 meses, 27 dias)</span></div>
+                <div class="info-item"><span class="info-key">Situação Cadastral</span><span class="info-value"><span class="status-badge">ATIVA</span> desde a abertura</span></div>
+                <div class="info-item"><span class="info-key">Natureza Jurídica</span><span class="info-value">Sociedade Empresária Limitada</span></div>
+                <div class="info-item"><span class="info-key">Capital Social</span><span class="info-value">R$ 20.000,00</span></div>
+                <div class="info-item"><span class="info-key">Porte da Empresa</span><span class="info-value">Micro Empresa (ME)</span></div>
+                <div class="info-item"><span class="info-key">Optante pelo Simples</span><span class="info-value">Sim (Desde 27/03/2009)</span></div>
+                <div class="info-item"><span class="info-key">Optante pelo MEI</span><span class="info-value">Não</span></div>
+                <div class="info-item"><span class="info-key">Tipo de Estabelecimento</span><span class="info-value">Matriz</span></div>
+            </div>
+
+            <div class="socios-container">
+                <h3 style="font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--secondary)">groups</span>
+                    Quadro de Sócios & Administradores
+                </h3>
+                <div class="socios-grid">
+                    <div class="socio-card">
+                        <p class="socio-name">Neide de C. V. Cabral</p>
+                        <p class="socio-role">Sócio-Administrador</p>
+                    </div>
+                    <div class="socio-card">
+                        <p class="socio-name">Rolando da Silva Cabral</p>
+                        <p class="socio-role">Sócio</p>
+                    </div>
+                    <div class="socio-card">
+                        <p class="socio-name">Walace Vidal Cabral</p>
+                        <p class="socio-role">Sócio</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card" id="contatos">
+                <h3>
+                    <span class="material-symbols-outlined">perm_contact_calendar</span>
+                    Canais de Contato
+                </h3>
+                <div class="contact-method">
+                    <span class="material-symbols-outlined contact-icon">mail</span>
+                    <div>
+                        <strong>E-mail institucional</strong><br>
+                        <a href="mailto:neidevcabral@gmail.com">neidevcabral@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <span class="material-symbols-outlined contact-icon">call</span>
+                    <div>
+                        <strong>Telefone Fixo</strong><br>
+                        <a href="tel:2126069847">(21) 2606-9847</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <span class="material-symbols-outlined contact-icon" style="color: #25d366;">chat</span>
+                    <div>
+                        <strong>WhatsApp / Celular</strong><br>
+                        <a href="https://wa.me/5521994807146" target="_blank">(21) 99480-7146</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-card" id="localizacao">
+                <h3>
+                    <span class="material-symbols-outlined">location_on</span>
+                    Endereço
+                </h3>
+                <div class="location-item">
+                    <span class="material-symbols-outlined location-icon">storefront</span>
+                    <div>
+                        <strong>Rua Jose Clemente, 34 - Loja</strong><br>
+                        Centro, Niterói - RJ<br>
+                        CEP: 24020-103
+                    </div>
+                </div>
+                
+                <a href="https://www.google.com/maps/search/?api=1&query=Rua+Jose+Clemente+34+Centro+Niteroi" target="_blank" class="cta-button" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; padding: 8px 15px; margin-top: 5px;">
+                    <span class="material-symbols-outlined" style="font-size: 1.1rem">map</span> Ver no Google Maps
+                </a>
+
+                <div class="location-box">
+                    <p style="margin: 0; font-size: 0.8rem; color: #475569;">
+                        <strong>Para Correspondência:</strong><br>
+                        Casa do Atleta Comercio de Artigos Esportivos LTDA<br>
+                        Rua Jose Clemente 34 Loja, Centro<br>
+                        Niterói - RJ | CEP: 24020-103
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <section class="card cnae-section" id="cnaes">
+            <h2>
+                <span class="material-symbols-outlined" style="color: var(--secondary)">analytics</span>
+                Portfólio de Atividades Cadastradas (CNAEs)
+            </h2>
+            <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Além da atividade principal, a instituição está qualificada para operar em:</p>
+            <div class="cnae-list">
+                <div class="cnae-item"><span class="cnae-code">82.99-7-99</span> Outras atividades de serviços prestados às empresas</div>
+                <div class="cnae-item"><span class="cnae-code">93.19-1-99</span> Outras atividades esportivas não especificadas</div>
+                <div class="cnae-item"><span class="cnae-code">47.61-0-03</span> Comércio varejista de artigos de papelaria</div>
+                <div class="cnae-item"><span class="cnae-code">47.53-9-00</span> Comércio de eletrodomésticos, áudio e vídeo</div>
+                <div class="cnae-item"><span class="cnae-code">46.19-2-00</span> Representantes comerciais e agentes do comércio</div>
+                <div class="cnae-item"><span class="cnae-code">47.56-3-00</span> Comércio de instrumentos musicais e acessórios</div>
+                <div class="cnae-item"><span class="cnae-code">47.59-8-99</span> Comércio de outros artigos de uso pessoal e doméstico</div>
+                <div class="cnae-item"><span class="cnae-code">47.41-5-00</span> Comércio varejista de tintas e materiais para pintura</div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Casa do Atleta. Todos os direitos reservados.</p>
+        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;">CNPJ: 10.760.305/0001-55 | Niterói - RJ</p>
+    </footer>
+
+</body>
+</html>
