@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+<head> <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18224976283"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18224976283');
+</script>
+
+  <!-- Event snippet for Visualização de página (2) conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18224976283/foAUCPvA-sMcEJujrPJD',
+      'value': 1.0,
+      'currency': 'BRL'
+  });
+</script>
+
+  <!-- Event snippet for Visualização de página (2) conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18224976283/foAUCPvA-sMcEJujrPJD',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa do Atleta | Artigos Esportivos</title>
@@ -565,39 +603,4 @@
 
                 <div class="location-box">
                     <p style="margin: 0; font-size: 0.8rem; color: #475569;">
-                        <strong>Para Correspondência:</strong><br>
-                        Casa do Atleta Comercio de Artigos Esportivos LTDA<br>
-                        Rua Jose Clemente 34 Loja, Centro<br>
-                        Niterói - RJ | CEP: 24020-103
-                    </p>
-                </div>
-            </div>
-        </aside>
-
-        <section class="card cnae-section" id="cnaes">
-            <h2>
-                <span class="material-symbols-outlined" style="color: var(--secondary)">analytics</span>
-                Portfólio de Atividades Cadastradas (CNAEs)
-            </h2>
-            <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Além da atividade principal, a instituição está qualificada para operar em:</p>
-            <div class="cnae-list">
-                <div class="cnae-item"><span class="cnae-code">82.99-7-99</span> Outras atividades de serviços prestados às empresas</div>
-                <div class="cnae-item"><span class="cnae-code">93.19-1-99</span> Outras atividades esportivas não especificadas</div>
-                <div class="cnae-item"><span class="cnae-code">47.61-0-03</span> Comércio varejista de artigos de papelaria</div>
-                <div class="cnae-item"><span class="cnae-code">47.53-9-00</span> Comércio de eletrodomésticos, áudio e vídeo</div>
-                <div class="cnae-item"><span class="cnae-code">46.19-2-00</span> Representantes comerciais e agentes do comércio</div>
-                <div class="cnae-item"><span class="cnae-code">47.56-3-00</span> Comércio de instrumentos musicais e acessórios</div>
-                <div class="cnae-item"><span class="cnae-code">47.59-8-99</span> Comércio de outros artigos de uso pessoal e doméstico</div>
-                <div class="cnae-item"><span class="cnae-code">47.41-5-00</span> Comércio varejista de tintas e materiais para pintura</div>
-            </div>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Casa do Atleta. Todos os direitos reservados.</p>
-        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;">CNPJ: 10.760.305/0001-55 | Niterói - RJ</p>
-    </footer>
-
-</body>
-</html>
+                        <strong>Para Correspondência:
